@@ -29,7 +29,6 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
-import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.multidex.MultiDex;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -37,16 +36,15 @@ import androidx.viewpager.widget.ViewPager;
 
 public class activity_home_group extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private adapter_home adapterHome;
-    private ViewPager homeViewPager;
-    private SwipeRefreshLayout homeSwipeRefresh;
-
+        private adapter_home adapterHome;
+        private ViewPager homeViewPager;
+        private SwipeRefreshLayout homeSwipeRefresh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         MultiDex.install(this);
         super.onCreate(savedInstanceState);
         Fresco.initialize(this);
-        DataBindingUtil.setContentView(this,R.layout.activity_home_group);
+        setContentView(R.layout.activity_home_group);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -89,6 +87,7 @@ public class activity_home_group extends AppCompatActivity
         String email = String.valueOf(sharedPreferences.getString(data_session.EMAIL,"Not Available"));
         String name = String.valueOf(sharedPreferences.getString(data_session.NAMA,"Not Available"));
         Data_account data = new Data_account(name,email);
+        //binding.setData(data);
     }
 
     @SuppressLint("CutPasteId")

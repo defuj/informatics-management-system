@@ -1,71 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/activity_vertical_margin"
+    android:paddingTop="16dp"
+    android:paddingRight="@dimen/activity_vertical_margin"
+    android:paddingBottom="10dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <data>
-        <variable
-            name="data"
-            type="org.deadlock.oim.data.Data_account"/>
-    </data>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:contentDescription="@string/nav_header_desc"
+        app:srcCompat="@drawable/oims" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/activity_vertical_margin"
-        android:paddingTop="16dp"
-        android:paddingRight="@dimen/activity_vertical_margin"
-        android:paddingBottom="10dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:contentDescription="@string/nav_header_desc"
-            app:srcCompat="@drawable/oims" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/txtnama"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:fontFamily="@font/source_sanspro_regular"
-                android:text="@{data.name,default=Nama}"
-                android:textColor="@color/black_60_transparent"
-                android:textSize="22sp"
-                android:textStyle="normal" />
-
-            <TextView
-                android:id="@+id/txtemail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:fontFamily="@font/source_sanspro_regular"
-                android:text="@{data.email,default=Email}"
-                android:textColor="@color/black_60_transparent"
-                android:textSize="12sp"
-                android:textStyle="normal" />
-        </LinearLayout>
+        android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/txtnama"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:fontFamily="@font/source_sanspro_regular"
-            android:text="ORGANIZATIONS"
+            android:text="@{data.name,default=Nama}"
             android:textColor="@color/black_60_transparent"
             android:textSize="22sp"
-            android:textStyle="normal"
-            android:visibility="gone" />
+            android:textStyle="normal" />
 
+        <TextView
+            android:id="@+id/txtemail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/source_sanspro_regular"
+            android:text="@{data.email,default=Email}"
+            android:textColor="@color/black_60_transparent"
+            android:textSize="12sp"
+            android:textStyle="normal" />
     </LinearLayout>
-</layout>
+
+</LinearLayout>
