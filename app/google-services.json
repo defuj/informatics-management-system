@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "23034710355",
+    "firebase_url": "https://oims-2744d.firebaseio.com",
+    "project_id": "oims-2744d",
+    "storage_bucket": "oims-2744d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:23034710355:android:b61beb290d0f5048",
+        "android_client_info": {
+          "package_name": "org.deadlock.oim"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "23034710355-7lhrfufqkb16n3jluv3mbfhqqki1cerr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.deadlock.oim",
+            "certificate_hash": "e8cda4b0190a27f58b021a99c88cc77c2f545f89"
+          }
+        },
+        {
+          "client_id": "23034710355-5jlh5cjtdqhqfseerqjg1tp9n0ba99fk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsFp1F2jqB4CmwR6oVEuvSbSkMi3EWO4g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "23034710355-5jlh5cjtdqhqfseerqjg1tp9n0ba99fk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

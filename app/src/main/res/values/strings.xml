@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">IMS : Organizational</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="refresh">Refresh</string>
+    <string name="send_feedback">Send feedback</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="join">Join</string>
+</resources>
