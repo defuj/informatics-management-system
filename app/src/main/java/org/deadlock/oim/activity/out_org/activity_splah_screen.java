@@ -1,13 +1,14 @@
-package org.deadlock.oim.activity;
+package org.deadlock.oim.activity.out_org;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
 
 import org.deadlock.oim.R;
-import org.deadlock.oim.data;
+import org.deadlock.oim.data.data_session;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class activity_splah_screen extends AppCompatActivity {
     private boolean loggedIn;
@@ -16,8 +17,8 @@ public class activity_splah_screen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splah_screen);
-        SharedPreferences sharedPreferences = getSharedPreferences(data.SHARED_PREF_NAME, 0);
-        loggedIn = sharedPreferences.getBoolean(data.LOGGEDIN_SHARED_PREF, false);
+        SharedPreferences sharedPreferences = getSharedPreferences(data_session.SHARED_PREF_NAME, 0);
+        loggedIn = sharedPreferences.getBoolean(data_session.LOGGEDIN_SHARED_PREF, false);
         CekStatusLogin();
     }
 

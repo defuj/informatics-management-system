@@ -1,12 +1,13 @@
-package org.deadlock.oim.activity;
+package org.deadlock.oim.activity.out_org;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import com.androidquery.AQuery;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 @SuppressLint("Registered")
 public class BaseApp extends AppCompatActivity {

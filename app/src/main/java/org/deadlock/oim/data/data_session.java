@@ -1,11 +1,11 @@
-package org.deadlock.oim;
+package org.deadlock.oim.data;
 
 import android.content.Context;
 import android.widget.Toast;
 
-import org.deadlock.oim.activity.BaseApp;
+import org.deadlock.oim.activity.out_org.BaseApp;
 
-public class data extends BaseApp {
+public class data_session extends BaseApp {
     public static final String EMAIL = "email";
     public static final String NAMA = "nama";
     public static final String FOTO = "foto";

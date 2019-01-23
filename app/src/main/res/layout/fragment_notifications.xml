@@ -18,14 +18,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/source_sanspro_semibold"
-                android:text="Notifications"
-                android:textColor="@color/black_60_transparent"
+                android:text="@string/notifications"
+                android:textColor="@color/black_overlay"
                 android:textSize="30sp" />
         </LinearLayout>
 
-        <android.support.v4.widget.SwipeRefreshLayout
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v4.widget.SwipeRefreshLayout>
+            android:layout_height="match_parent"
+            android:id="@+id/list_notif"/>
+
     </RelativeLayout>
 
 </FrameLayout>

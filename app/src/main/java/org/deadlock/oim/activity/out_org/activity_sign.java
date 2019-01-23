@@ -1,4 +1,4 @@
-package org.deadlock.oim.activity;
+package org.deadlock.oim.activity.out_org;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -21,8 +21,8 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.deadlock.oim.R;
-import org.deadlock.oim.data;
-import org.deadlock.oim.helper.dataHelper;
+import org.deadlock.oim.data.data_session;
+import org.deadlock.oim.helper.helper_data;
 
 import java.util.Objects;
 
@@ -40,7 +40,7 @@ public class activity_sign extends BaseApp {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign);
-        dataHelper DBHelper = new dataHelper(this);
+        helper_data DBHelper = new helper_data(this);
         db = DBHelper.getWritableDatabase();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -55,7 +55,6 @@ public class activity_sign extends BaseApp {
         signInButton = this.findViewById(R.id.sign_in_button);
 
         TextView textView= (TextView)signInButton.getChildAt(0);
-        //textView.setText("GET STARTED");
         textView.setText("SIGN");
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
@@ -95,23 +94,23 @@ public class activity_sign extends BaseApp {
                 url  = acct.getPhotoUrl().toString();
             }
 
-            SharedPreferences sharedPreferences = activity_sign.this.getSharedPreferences(data.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences = activity_sign.this.getSharedPreferences(data_session.SHARED_PREF_NAME, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString(data.EMAIL, email);
-            editor.putString(data.NAMA, nama);
-            editor.putString(data.FOTO, url);
-            editor.putString(data.LOGIN, "LOGEDIN");
-            editor.putBoolean(data.LOGGEDIN_SHARED_PREF, true);
+            editor.putString(data_session.EMAIL, email);
+            editor.putString(data_session.NAMA, nama);
+            editor.putString(data_session.FOTO, url);
+            editor.putString(data_session.LOGIN, "LOGEDIN");
+            editor.putBoolean(data_session.LOGGEDIN_SHARED_PREF, true);
             editor.apply();
 
             //save_data_account();
-            //save data ke database server dan database local android
+            //save data_session ke database server dan database local android
 
-            //insert data accounts ke database local android
+            //insert data_session accounts ke database local android
             db.execSQL("insert into accounts values('" +
-                    String.valueOf(data.EMAIL) + "','" +
-                    String.valueOf(data.NAMA) + "','" +
-                    String.valueOf(data.FOTO) + "')");
+                    String.valueOf(data_session.EMAIL) + "','" +
+                    String.valueOf(data_session.NAMA) + "','" +
+                    String.valueOf(data_session.FOTO) + "')");
 
             startActivity(new Intent(activity_sign.this, activity_home_group.class));
         }

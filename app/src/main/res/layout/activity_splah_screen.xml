@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.activity_splah_screen">
+    android:animateLayoutChanges="true"
+    tools:context=".activity.out_org.activity_splah_screen">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,7 +53,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"
                     android:fontFamily="sans-serif"
-                    android:text="ORGANIZATIONAL"
+                    android:text="IMaSys Organizations"
                     android:textSize="24sp" />
 
                 <TextView
@@ -61,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="sans-serif-light"
-                    android:text="Informatics Management" />
+                    android:text="Better for Informatics Management" />
 
             </LinearLayout>
 
@@ -74,4 +75,4 @@
             android:orientation="horizontal"></LinearLayout>
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

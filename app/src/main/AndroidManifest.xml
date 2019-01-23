@@ -16,9 +16,6 @@
         android:required="true" />
 
     <application
-        tools:replace="android:appComponentFactory"
-        android:appComponentFactory=""
-        android:allowBackup="true"
         android:extractNativeLibs="false"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_icons"
@@ -26,15 +23,15 @@
         android:roundIcon="@mipmap/ic_icons_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="p">
         <activity
-            android:name=".activity.activity_home_group"
+            android:name=".activity.out_org.activity_home_group"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".activity.activity_splah_screen"
+            android:name=".activity.out_org.activity_splah_screen"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.FullscreenTheme">
             <intent-filter>
@@ -44,9 +41,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.activity_sign"
+            android:name=".activity.out_org.activity_sign"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.FullscreenTheme" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

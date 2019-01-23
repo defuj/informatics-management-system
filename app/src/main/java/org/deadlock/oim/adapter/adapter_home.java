@@ -1,17 +1,19 @@
 package org.deadlock.oim.adapter;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-
 import org.deadlock.oim.fragment.out_org.fragment_notifications;
 import org.deadlock.oim.fragment.out_org.fragment_organizations;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 public class adapter_home extends FragmentStatePagerAdapter {
     public adapter_home(FragmentManager fm) {
         super(fm);
     }
 
+    @NonNull
     @Override
     public Fragment getItem(int position) {
         switch (position){

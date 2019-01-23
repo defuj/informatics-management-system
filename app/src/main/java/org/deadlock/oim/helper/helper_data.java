@@ -5,11 +5,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class dataHelper extends SQLiteOpenHelper {
+public class helper_data extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "oims.db";
     private static final int DATABASE_VERSION = 1;
 
-    public dataHelper(Context context) {
+    public helper_data(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         // TODO Auto-generated constructor stub
     }

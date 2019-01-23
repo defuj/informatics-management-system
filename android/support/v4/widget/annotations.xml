@@ -1,0 +1,5 @@
+<root>
+    <item name="androidx.drawerlayout.widget.DrawerLayout">
+        <annotation name='java.lang.Deprecated' />
+    </item>
+</root>
