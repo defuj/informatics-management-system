@@ -22,10 +22,17 @@
         android:fitsSystemWindows="false"
         android:paddingStart="0dp"
         android:paddingEnd="10dp"
-        app:headerLayout="@layout/nav_header_activity_home_group"
+        app:headerLayout="@layout/nav_header_activity_home_group_bac"
         app:itemBackground="@drawable/nav_item_background"
         app:itemIconTint="@drawable/nav_item_text"
         app:itemTextColor="@drawable/nav_item_text"
-        app:menu="@menu/menu_home_group_drawer" />
+        app:menu="@menu/menu_home_group_drawer">
+
+        <include
+            layout="@layout/nav_header_activity_home_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="-10dp" />
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

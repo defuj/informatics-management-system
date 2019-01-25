@@ -1,3 +1,12 @@
 <component name="ProjectDictionaryState">
-  <dictionary name="defuj" />
+  <dictionary name="defuj">
+    <words>
+      <w>emailtext</w>
+      <w>namatext</w>
+      <w>textemail</w>
+      <w>textnama</w>
+      <w>txtemail</w>
+      <w>txtnama</w>
+    </words>
+  </dictionary>
 </component>

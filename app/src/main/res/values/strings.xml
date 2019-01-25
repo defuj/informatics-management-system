@@ -10,4 +10,7 @@
     <string name="join">Join</string>
     <string name="notifications">Notifications</string>
     <string name="organizations">Organizations</string>
+    <string name="full_name">Full Name</string>
+    <string name="username_domain_com">username@domain.com</string>
+    <string name="unenroll">Unenroll</string>
 </resources>

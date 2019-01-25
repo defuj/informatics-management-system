@@ -42,11 +42,19 @@ public class fragment_organizations extends Fragment {
         recyclerView = Objects.requireNonNull(getActivity()).findViewById(R.id.list_org);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        //retrieving_items();
+        retrieving_items();
 
     }
 
     private void retrieving_items() {
+        for(int a =1;a<=17;a++){
+            modelListOrg = new model_list_org();
+            modelListOrg.setOrg("Organization Name "+a);
+            modelListOrg.setDesc("Type of organizations");
+            modelListOrg.setNama("Name of organization leader");
+            orgs.add(modelListOrg);
+        }
+
         adapterListOrg = new adapter_list_org(getContext(), orgs);
         recyclerView.setAdapter(adapterListOrg);
     }

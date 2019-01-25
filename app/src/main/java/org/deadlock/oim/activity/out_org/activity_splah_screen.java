@@ -9,6 +9,7 @@ import org.deadlock.oim.R;
 import org.deadlock.oim.data.data_session;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
 
 public class activity_splah_screen extends AppCompatActivity {
     private boolean loggedIn;
@@ -17,6 +18,9 @@ public class activity_splah_screen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splah_screen);
+        getWindow().setAllowEnterTransitionOverlap(true);
+        getWindow().setAllowReturnTransitionOverlap(true);
+
         SharedPreferences sharedPreferences = getSharedPreferences(data_session.SHARED_PREF_NAME, 0);
         loggedIn = sharedPreferences.getBoolean(data_session.LOGGEDIN_SHARED_PREF, false);
         CekStatusLogin();
@@ -32,9 +36,11 @@ public class activity_splah_screen extends AppCompatActivity {
             @Override
             public void onFinish() {
                 if(loggedIn){
-                    startActivity(new Intent(activity_splah_screen.this, activity_home_group.class));
+                    startActivity(new Intent(activity_splah_screen.this, activity_home_group.class),
+                            ActivityOptionsCompat.makeSceneTransitionAnimation(activity_splah_screen.this).toBundle());
                 }else{
-                    startActivity(new Intent(activity_splah_screen.this, activity_sign.class));
+                    startActivity(new Intent(activity_splah_screen.this, activity_sign.class),
+                            ActivityOptionsCompat.makeSceneTransitionAnimation(activity_splah_screen.this).toBundle());
                 }
             }
         }.start();

@@ -1,44 +1,65 @@
 package org.deadlock.oim.activity.out_org;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.annotation.SuppressLint;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.provider.Settings;
+import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.deadlock.oim.R;
 import org.deadlock.oim.adapter.adapter_home;
-import org.deadlock.oim.data.Data_account;
+import org.deadlock.oim.adapter.adapter_list_accounts;
 import org.deadlock.oim.data.data_session;
 import org.deadlock.oim.helper.helper_snackbar;
+import org.deadlock.oim.model.model_list_accounts;
+
+import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.multidex.MultiDex;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
 public class activity_home_group extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-        private adapter_home adapterHome;
-        private ViewPager homeViewPager;
-        private SwipeRefreshLayout homeSwipeRefresh;
+    private adapter_home adapterHome;
+    private ViewPager homeViewPager;
+    private SwipeRefreshLayout homeSwipeRefresh;
+    private boolean dropAccount = true;
+    private Button BtndropAccount;
+    private DrawerLayout drawer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         MultiDex.install(this);
@@ -48,9 +69,16 @@ public class activity_home_group extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                dropAccount = true;
+                dropAccounts();
+            }
+        };
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.black_60_transparent));
@@ -78,15 +106,95 @@ public class activity_home_group extends AppCompatActivity
             }
         });
 
+        //View headerView = navigationView.getHeaderView(0);
+        BtndropAccount = findViewById(R.id.drop_account);
+        BtndropAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dropAccounts();
+            }
+        });
+
+        loadNavigationFunction();
+        loadAccounts();
         loadData();
         loadViewPager();
     }
 
+    private void loadNavigationFunction() {
+        NavigationView navSecond = findViewById(R.id.navSecond);
+        navSecond.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                if (id == R.id.nav_add_account){
+                    startActivity(new Intent(Settings.ACTION_ADD_ACCOUNT)
+                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK).putExtra(Settings.EXTRA_ACCOUNT_TYPES,new String[] {"com.google"}));
+                    drawer.closeDrawer(GravityCompat.START);
+                }else if (id == R.id.nav_manage_account){
+                    startActivityForResult(new Intent(Settings.ACTION_SYNC_SETTINGS),0);
+                    drawer.closeDrawer(GravityCompat.START);
+                }
+
+                return true;
+            }
+        });
+    }
+
+    private void dropAccounts(){
+        if(dropAccount){
+            LinearLayout linearLayout = findViewById(R.id.layout_account_full);
+            linearLayout.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            LinearLayout layoutAccount = findViewById(R.id.layout_account);
+            layoutAccount.setVisibility(View.GONE);
+            dropAccount = false;
+            BtndropAccount.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0, R.drawable.ic_arrow_drop_down_black_24dp,0);
+        }else{
+            LinearLayout linearLayout = findViewById(R.id.layout_account_full);
+            linearLayout.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
+            LinearLayout layoutAccount = findViewById(R.id.layout_account);
+            layoutAccount.setVisibility(View.VISIBLE);
+            dropAccount = true;
+            BtndropAccount.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0, R.drawable.ic_arrow_drop_up_black_24dp,0);
+        }
+    }
+
+    private void loadAccounts() {
+        dropAccounts();
+        //View headerView = navigationView.getHeaderView(0);
+        AccountManager manager = (AccountManager)getSystemService(ACCOUNT_SERVICE);
+        Account[] list = manager.getAccounts();
+
+        RecyclerView listAccount = findViewById(R.id.list_account);
+        listAccount.setLayoutManager(new LinearLayoutManager(this));
+
+        Pattern gmailPattern = Patterns.EMAIL_ADDRESS;
+        ArrayList<model_list_accounts> accounts = new ArrayList<>();
+        //ContactsContract.Profile.PHOTO_THUMBNAIL_URI;
+
+        for(Account akun: list){
+            if(gmailPattern.matcher(akun.name).matches()){
+                model_list_accounts modelListAccounts = new model_list_accounts();
+                modelListAccounts.setEmail(akun.name);
+                modelListAccounts.setFoto("");
+                accounts.add(modelListAccounts);
+            }
+        }
+
+        adapter_list_accounts adapterListAccounts = new adapter_list_accounts(accounts,this);
+        listAccount.setAdapter(adapterListAccounts);
+    }
+
     private void loadData() {
+        TextView textnama = findViewById(R.id.namatext);
+        TextView textemail = findViewById(R.id.emailtext);
+        SimpleDraweeView currentFoto = findViewById(R.id.currentAccountLogin);
+
         SharedPreferences sharedPreferences = getSharedPreferences(data_session.SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        String email = String.valueOf(sharedPreferences.getString(data_session.EMAIL,"Not Available"));
-        String name = String.valueOf(sharedPreferences.getString(data_session.NAMA,"Not Available"));
-        Data_account data = new Data_account(name,email);
+        textnama.setText(sharedPreferences.getString(data_session.NAMA,"Not Available"));
+        textemail.setText(sharedPreferences.getString(data_session.EMAIL,"Not Available"));
+        currentFoto.setImageURI(Uri.parse(String.valueOf(sharedPreferences.getString(data_session.FOTO,"Not Available"))));
+        //Data_account data = new Data_account(name,email);
         //binding.setData(data);
     }
 
@@ -114,7 +222,7 @@ public class activity_home_group extends AppCompatActivity
     }
 
     private void refresh_content() {
-        new CountDownTimer(5000, 1000) {
+        new CountDownTimer(4000, 1000) {
             @Override
             public void onTick(long l) {
 
@@ -122,6 +230,7 @@ public class activity_home_group extends AppCompatActivity
 
             @Override
             public void onFinish() {
+                loadViewPager();
                 homeSwipeRefresh.setRefreshing(false);
             }
         }.start();
@@ -180,7 +289,7 @@ public class activity_home_group extends AppCompatActivity
             adapterHome.notifyDataSetChanged();
         } else if (id == R.id.nav_calendar) {
             Intent intent = new Intent();
-            ComponentName componentName = new ComponentName("com.google.android.calendar", "com.android.calendar.LaunchActivity");
+            ComponentName componentName = new ComponentName("com.android.calendar", "com.android.calendar.LaunchActivity");
             startActivity(intent.setComponent(componentName));
         } else if (id == R.id.nav_notification) {
             homeViewPager.setCurrentItem(1, false);
@@ -188,7 +297,8 @@ public class activity_home_group extends AppCompatActivity
         } else if (id == R.id.nav_todo) {
             showSnackBar();
         } else if (id == R.id.nav_setting) {
-            showSnackBar();
+            startActivity(new Intent(activity_home_group.this, activity_setting.class),
+                    ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
         } else if (id == R.id.nav_help) {
             showSnackBar();
         }

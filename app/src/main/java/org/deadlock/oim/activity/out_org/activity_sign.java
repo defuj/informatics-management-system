@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -26,6 +25,8 @@ import org.deadlock.oim.helper.helper_data;
 
 import java.util.Objects;
 
+import androidx.core.app.ActivityOptionsCompat;
+
 public class activity_sign extends BaseApp {
 
     private SignInButton signInButton;
@@ -40,6 +41,7 @@ public class activity_sign extends BaseApp {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign);
+
         helper_data DBHelper = new helper_data(this);
         db = DBHelper.getWritableDatabase();
 
@@ -54,8 +56,8 @@ public class activity_sign extends BaseApp {
 
         signInButton = this.findViewById(R.id.sign_in_button);
 
-        TextView textView= (TextView)signInButton.getChildAt(0);
-        textView.setText("SIGN");
+        //TextView textView= (TextView)signInButton.getChildAt(0);
+        //textView.setText("SIGN");
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
@@ -112,7 +114,8 @@ public class activity_sign extends BaseApp {
                     String.valueOf(data_session.NAMA) + "','" +
                     String.valueOf(data_session.FOTO) + "')");
 
-            startActivity(new Intent(activity_sign.this, activity_home_group.class));
+            startActivity(new Intent(activity_sign.this, activity_home_group.class),
+                    ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
         }
     }
 
