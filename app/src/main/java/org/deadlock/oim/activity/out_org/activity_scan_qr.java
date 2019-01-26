@@ -1,6 +1,5 @@
 package org.deadlock.oim.activity.out_org;
 
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -25,23 +24,26 @@ public class activity_scan_qr extends AppCompatActivity implements ZXingScannerV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_scan_qr);
         mScannerView = new ZXingScannerView(this);
         setContentView(mScannerView);
         getWindow().setAllowEnterTransitionOverlap(true);
         getWindow().setAllowReturnTransitionOverlap(true);
 
-        /*getSupportActionBar().setDisplayShowTitleEnabled(true);
-        getSupportActionBar().setTitle("Scan QR Code");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.white)));*/
-
         ActionBar actionBar = getSupportActionBar();
-        int black = getResources().getColor(R.color.black_80_transparent);
-        Spannable spannable = new SpannableString("Scan QR Code");
+        int black = getResources().getColor(R.color.white);
+        Spannable spannable = new SpannableString("");
         spannable.setSpan(new ForegroundColorSpan(black),0,spannable.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannable.setSpan(new TypefaceSpan("poppins.ttf"),0,spannable.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         Objects.requireNonNull(actionBar).setTitle(spannable);
-        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.white)));
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setElevation(0);
+    }
+
+    @Override
+    public boolean onNavigateUp() {
+        finish();
+        return true;
     }
 
     @Override
