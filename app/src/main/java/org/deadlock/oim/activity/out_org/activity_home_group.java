@@ -40,12 +40,12 @@ import java.util.regex.Pattern;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.multidex.MultiDex;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -62,7 +62,6 @@ public class activity_home_group extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        MultiDex.install(this);
         super.onCreate(savedInstanceState);
         Fresco.initialize(this);
         setContentView(R.layout.activity_home_group);
@@ -102,7 +101,7 @@ public class activity_home_group extends AppCompatActivity
         add_org.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showSnackBar();
+                addOrg();
             }
         });
 
@@ -232,8 +231,35 @@ public class activity_home_group extends AppCompatActivity
             public void onFinish() {
                 loadViewPager();
                 homeSwipeRefresh.setRefreshing(false);
+
             }
         }.start();
+    }
+
+    private void addOrg(){
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        View view = View.inflate(this,R.layout.content_alert_dialog_add_org,null);
+
+        dialog.setView(view);
+        final AlertDialog alertDialog = dialog.create();
+        Button cancel = view.findViewById(R.id.btnNextTime);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+            }
+        });
+
+        Button ok = view.findViewById(R.id.btnCreate);
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showSnackBar();
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog.show();
     }
 
     @Override

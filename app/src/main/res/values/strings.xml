@@ -13,4 +13,20 @@
     <string name="full_name">Full Name</string>
     <string name="username_domain_com">username@domain.com</string>
     <string name="unenroll">Unenroll</string>
+    <string name="msg_add_org">You will create a group for your organization, the group will help you to manage informatics system of your organization.
+        \n\nThere are two types of group, \n
+         1. Group with Division feature, \n
+         2. Group with Non-Division feature.\n
+        \nGroup features :
+        \n - Archives Files,
+        \n - Documents,
+        \n - Gallery,
+        \n - Message,
+        \n - Notes Schedule,
+        \n - Etc.\n\n
+
+        Input your group information to create :\n
+
+    </string>
+    <string name="terms">I agree with terms and privacy policies to create a new group. <u>Learn more.</u></string>
 </resources>

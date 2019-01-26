@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.out_org.fragment_organizations">
+    tools:context=".fragment.out_org.fragment_organizations"
+    android:id="@+id/fragment_organization">
 
     <RelativeLayout
         android:layout_width="match_parent"

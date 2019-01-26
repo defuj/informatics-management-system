@@ -22,6 +22,14 @@ public class helper_data extends SQLiteOpenHelper {
                 "foto text null);";
         Log.d("Data", "onCreate: " + sql);
         sqLiteDatabase.execSQL(sql);
+
+        sql = "create table orgs(" +
+                "id integer primary key, " +
+                "organization text null, " +
+                "organization_categories text null, " +
+                "descriptions text null);";
+        Log.d("Data", "onCreate: " + sql);
+        sqLiteDatabase.execSQL(sql);
     }
 
     @Override

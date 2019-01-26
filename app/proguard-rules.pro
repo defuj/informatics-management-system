@@ -20,4 +20,5 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 -keep class org.lucasr.twowayview.** { *; }
+#-keep class org.deadlock.oim.** { *; }
 -ignorewarnings

@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -21,7 +22,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.deadlock.oim.R;
 import org.deadlock.oim.data.data_session;
-import org.deadlock.oim.helper.helper_data;
 
 import java.util.Objects;
 
@@ -42,8 +42,16 @@ public class activity_sign extends BaseApp {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign);
 
-        helper_data DBHelper = new helper_data(this);
+        /**helper_data DBHelper = new helper_data(this);
         db = DBHelper.getWritableDatabase();
+
+        for(int a =1;a<=5;a++){
+            db.execSQL("insert into orgs values(" +
+                    a + ",'" +
+                    String.valueOf("Organization Name "+a) + "','" +
+                    String.valueOf("Organization categories "+a) + "','" +
+                    String.valueOf("This is sample for organizations description "+a) + "')");
+        }**/
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -56,8 +64,8 @@ public class activity_sign extends BaseApp {
 
         signInButton = this.findViewById(R.id.sign_in_button);
 
-        //TextView textView= (TextView)signInButton.getChildAt(0);
-        //textView.setText("SIGN");
+        TextView textView= (TextView)signInButton.getChildAt(0);
+        textView.setText("Sign In");
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
@@ -113,6 +121,7 @@ public class activity_sign extends BaseApp {
                     String.valueOf(data_session.EMAIL) + "','" +
                     String.valueOf(data_session.NAMA) + "','" +
                     String.valueOf(data_session.FOTO) + "')");
+
 
             startActivity(new Intent(activity_sign.this, activity_home_group.class),
                     ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
