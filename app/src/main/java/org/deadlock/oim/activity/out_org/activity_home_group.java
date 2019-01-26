@@ -262,6 +262,41 @@ public class activity_home_group extends AppCompatActivity
         alertDialog.show();
     }
 
+    private void joinOrg(){
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        View view = View.inflate(this,R.layout.content_alert_dialog_join_org,null);
+
+        dialog.setView(view);
+        final AlertDialog alertDialog = dialog.create();
+        Button cancel = view.findViewById(R.id.btnCancelJoin);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+            }
+        });
+
+        Button ok = view.findViewById(R.id.btnJoin);
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showSnackBar();
+                alertDialog.dismiss();
+            }
+        });
+
+        ImageButton ScanQR = view.findViewById(R.id.scanQRCode);
+        ScanQR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showSnackBar();
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog.show();
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -298,7 +333,7 @@ public class activity_home_group extends AppCompatActivity
         }else if (id == R.id.action_send) {
             showSnackBar();
         }else if (id == R.id.action_join) {
-            showSnackBar();
+            joinOrg();
         }
 
         return super.onOptionsItemSelected(item);
