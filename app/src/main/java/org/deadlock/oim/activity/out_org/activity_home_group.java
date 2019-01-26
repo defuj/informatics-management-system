@@ -7,6 +7,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -263,13 +264,17 @@ public class activity_home_group extends AppCompatActivity
         alertDialog.show();
     }
 
+    @SuppressLint("SetTextI18n")
     private void joinOrg(){
+        View viewroot = View.inflate(activity_home_group.this,R.layout.content_alert_dialog_join_org,null);
+        final EditText token = new EditText(this);
+        token.findViewById(R.id.token_code);
+        token.setText("Bismillah");
+
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         View view = View.inflate(this,R.layout.content_alert_dialog_join_org,null);
-
         dialog.setView(view);
         final AlertDialog alertDialog = dialog.create();
-        final EditText token = findViewById(R.id.token_code);
         Button cancel = view.findViewById(R.id.btnCancelJoin);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -284,18 +289,7 @@ public class activity_home_group extends AppCompatActivity
             public void onClick(View view) {
                 //showSnackBar();
                 //alertDialog.dismiss();
-                if(token.getText() != null){
-                    // jika token sudah terisi
-                    // verifikasi token
-                    /** input kode untuk verifikasi token disini**/
-
-                    showSnackBar();
-                    alertDialog.dismiss();
-                }else{
-                    // jika token belum ada
-                    token.setError("Token code must be entered");
-                    token.requestFocus();
-                }
+                verifyToken();
             }
         });
 
@@ -309,6 +303,37 @@ public class activity_home_group extends AppCompatActivity
         });
 
         alertDialog.show();
+    }
+
+    private void verifyToken(){
+        String result_code;
+        View views = View.inflate(activity_home_group.this,R.layout.content_alert_dialog_join_org,null);
+        final EditText token = views.findViewById(R.id.token_code);
+        Drawable icon = getResources().getDrawable(R.drawable.ic_check_circle_black_24dp);
+        icon.setBounds(0,0,icon.getIntrinsicWidth(),icon.getIntrinsicHeight());
+
+        result_code = String.valueOf(token.getText());
+        if(result_code.isEmpty()){
+            Toast.makeText(this,result_code,Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this,result_code,Toast.LENGTH_SHORT).show();
+        }
+
+        /**if(token.getText().toString().isEmpty()){
+            // jika token sudah terisi
+            // verifikasi token
+
+            Toast.makeText(this,"Token code still empty",Toast.LENGTH_SHORT).show();
+            icon.setBounds(0,0,icon.getIntrinsicWidth(),icon.getIntrinsicHeight());
+            token.setError("Token code must be entered");
+            token.requestFocus();
+        }else{
+            // jika token belum ada
+            Toast.makeText(this,"Token code not empty",Toast.LENGTH_SHORT).show();
+            //showSnackBar();
+        } **/
+
+
     }
 
     @Override
