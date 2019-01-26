@@ -18,6 +18,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -268,6 +269,7 @@ public class activity_home_group extends AppCompatActivity
 
         dialog.setView(view);
         final AlertDialog alertDialog = dialog.create();
+        final EditText token = findViewById(R.id.token_code);
         Button cancel = view.findViewById(R.id.btnCancelJoin);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -280,8 +282,20 @@ public class activity_home_group extends AppCompatActivity
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showSnackBar();
-                alertDialog.dismiss();
+                //showSnackBar();
+                //alertDialog.dismiss();
+                if(token.getText() != null){
+                    // jika token sudah terisi
+                    // verifikasi token
+                    /** input kode untuk verifikasi token disini**/
+
+                    showSnackBar();
+                    alertDialog.dismiss();
+                }else{
+                    // jika token belum ada
+                    token.setError("Token code must be entered");
+                    token.requestFocus();
+                }
             }
         });
 
