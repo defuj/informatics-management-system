@@ -297,7 +297,9 @@ public class activity_home_group extends AppCompatActivity
         ScanQR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showSnackBar();
+                //showSnackBar();
+                startActivity(new Intent(activity_home_group.this, activity_scan_qr.class),
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(activity_home_group.this).toBundle());
                 alertDialog.dismiss();
             }
         });

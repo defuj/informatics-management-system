@@ -8,6 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ScanQR" parent="AppTheme">
+        <item name="actionBarSize">50dip</item>
+        <item name="android:windowTitleSize">23sp</item>
+    </style>
+
     <style name="AppTheme.FullscreenTheme">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

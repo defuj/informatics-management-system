@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.GET_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -30,9 +31,13 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="p">
         <activity
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/ScanQR"
+            android:name=".activity.out_org.activity_scan_qr"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.out_org.activity_setting"
             android:screenOrientation="portrait"
-            android:name=".activity.out_org.activity_setting"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.out_org.activity_home_group"
             android:screenOrientation="portrait"

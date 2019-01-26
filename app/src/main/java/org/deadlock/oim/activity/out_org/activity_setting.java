@@ -16,7 +16,6 @@ public class activity_setting extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
         getWindow().setAllowEnterTransitionOverlap(true);
         getWindow().setAllowReturnTransitionOverlap(true);
-        getWindow().setAllowReturnTransitionOverlap(true);
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

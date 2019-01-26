@@ -94,7 +94,10 @@ dependencies {
     implementation 'com.airbnb.android:lottie:3.0.0-beta1'
     implementation 'com.daimajia.easing:library:2.0@aar'
     implementation 'com.daimajia.androidanimations:library:2.3@aar'
-    implementation 'jp.wasabeef:recyclerview-animators:3.0.0'
+    //implementation 'jp.wasabeef:recyclerview-animators:3.0.0'
+
+    //QR Code Scanner
+    implementation 'me.dm7.barcodescanner:zxing:1.9'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
