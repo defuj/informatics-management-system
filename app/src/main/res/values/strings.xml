@@ -31,4 +31,7 @@
     <string name="terms">I agree with terms and privacy policies to create a new group. <u>Learn more.</u></string>
     <string name="join_text">You will send a request to join the organization. Please enter the token code from the organization to join.</string>
     <string name="text_scanQRCode"><b>Update</b> : You can scan QR Code to request join.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

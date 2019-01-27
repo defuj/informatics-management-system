@@ -10,10 +10,9 @@
             android:title="Organizations"
             android:checked="true"/>
         <item
-            android:id="@+id/nav_calendar"
-            android:icon="@drawable/ic_event_black_24dp"
-            android:title="Calendar"
-            android:checkable="false"/>
+            android:id="@+id/nav_request"
+            android:icon="@drawable/ic_contact_mail_black_24dp"
+            android:title="My Request"/>
         <item
             android:id="@+id/nav_notification"
             android:icon="@drawable/ic_notifications_black_24dp"

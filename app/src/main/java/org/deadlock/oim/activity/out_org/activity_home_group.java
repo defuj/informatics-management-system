@@ -4,11 +4,9 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -65,6 +63,7 @@ public class activity_home_group extends AppCompatActivity
     private boolean dropAccount = true;
     private Button BtndropAccount;
     private DrawerLayout drawer;
+    private int current_position = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -208,7 +207,7 @@ public class activity_home_group extends AppCompatActivity
         homeViewPager = findViewById(R.id.HomePager);
         adapterHome = new adapter_home(getSupportFragmentManager());
         homeViewPager.setAdapter(adapterHome);
-        homeViewPager.setOffscreenPageLimit(2);
+        homeViewPager.setOffscreenPageLimit(3);
 
         View touchView = findViewById(R.id.HomePager);
         touchView.setOnTouchListener(new View.OnTouchListener() {
@@ -218,6 +217,9 @@ public class activity_home_group extends AppCompatActivity
                 return true;
             }
         });
+
+        homeViewPager.setCurrentItem(current_position, false);
+        adapterHome.notifyDataSetChanged();
     }
 
     public void showSnackBar(){
@@ -292,7 +294,7 @@ public class activity_home_group extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 //showSnackBar();
-                //alertDialog.dismiss();
+                alertDialog.dismiss();
                 verifyToken();
             }
         });
@@ -314,7 +316,7 @@ public class activity_home_group extends AppCompatActivity
     }
 
     private void verifyToken(){
-        String result_code;
+        /*String result_code;
         View views = View.inflate(activity_home_group.this,R.layout.content_alert_dialog_join_org,null);
         final EditText token = views.findViewById(R.id.token_code);
         Drawable icon = getResources().getDrawable(R.drawable.ic_check_circle_black_24dp);
@@ -325,7 +327,7 @@ public class activity_home_group extends AppCompatActivity
             Toast.makeText(this,result_code,Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this,result_code,Toast.LENGTH_SHORT).show();
-        }
+        }*/
 
         /*if(token.getText().toString().isEmpty()){
             // jika token sudah terisi
@@ -341,7 +343,58 @@ public class activity_home_group extends AppCompatActivity
             //showSnackBar();
         } **/
 
+        final ProgressDialog dialog = new ProgressDialog(activity_home_group.this);
+        dialog.setMessage("Verifying code");
+        dialog.show();
 
+        new CountDownTimer(5000, 1000) {
+            @Override
+            public void onTick(long l) {
+                new CountDownTimer(2000, 1000) {
+                    @Override
+                    public void onTick(long l) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        dialog.setMessage("Preparing request");
+                    }
+                }.start();
+            }
+
+            @Override
+            public void onFinish() {
+                dialog.dismiss();
+                addAttachment();
+            }
+        }.start();
+
+    }
+
+    private void addAttachment(){
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        View view = View.inflate(this,R.layout.content_alert_dialog_add_attachment,null);
+        dialog.setView(view);
+
+        final AlertDialog alertDialog = dialog.create();
+        Button finish = view.findViewById(R.id.btnSetRequest);
+        finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+            }
+        });
+
+        ImageButton add = view.findViewById(R.id.addAttachments);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(activity_home_group.this,"This feature is under development",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        alertDialog.show();
     }
 
     @Override
@@ -395,13 +448,15 @@ public class activity_home_group extends AppCompatActivity
         if (id == R.id.nav_home) {
             homeViewPager.setCurrentItem(0, false);
             adapterHome.notifyDataSetChanged();
-        } else if (id == R.id.nav_calendar) {
-            Intent intent = new Intent();
-            ComponentName componentName = new ComponentName("com.android.calendar", "com.android.calendar.LaunchActivity");
-            startActivity(intent.setComponent(componentName));
+            current_position = 0;
+        } else if (id == R.id.nav_request) {
+            homeViewPager.setCurrentItem(2, false);
+            adapterHome.notifyDataSetChanged();
+            current_position = 2;
         } else if (id == R.id.nav_notification) {
             homeViewPager.setCurrentItem(1, false);
             adapterHome.notifyDataSetChanged();
+            current_position = 1;
         } else if (id == R.id.nav_todo) {
             showSnackBar();
         } else if (id == R.id.nav_setting) {

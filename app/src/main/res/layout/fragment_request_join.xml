@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.out_org.fragment_notifications">
+    tools:context=".fragment.out_org.fragment_request_join">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,18 +18,18 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="wrap_content"
+                android:id="@+id/imageButton"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:background="@color/transparent"
-                android:src="@drawable/ic_notifications_black_24dp" />
+                android:src="@drawable/ic_contact_mail_black_24dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
-                android:text="Notification is empty"
+                android:text="You don't have any join requests"
                 android:textColor="@color/black_80_transparent"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -37,7 +37,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/list_notif"/>
+            android:id="@+id/list_request_join"/>
 
     </RelativeLayout>
 
