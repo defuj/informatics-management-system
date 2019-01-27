@@ -8,7 +8,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 
 import org.deadlock.oim.R;
-import org.deadlock.oim.adapter.adapter_list_org;
+import org.deadlock.oim.adapter.out_org.adapter_list_org;
 import org.deadlock.oim.model.model_list_org;
 
 import java.util.ArrayList;
@@ -54,7 +54,7 @@ public class fragment_organizations extends Fragment {
     }
 
     private void retrieving_items() {
-        /**helper_data DBHelper = new helper_data(getContext());
+        /*helper_data DBHelper = new helper_data(getContext());
         SQLiteDatabase db = DBHelper.getWritableDatabase();
 
         Cursor cursor = db.rawQuery("SELECT * FROM orgs", null);
@@ -68,7 +68,7 @@ public class fragment_organizations extends Fragment {
             orgs.add(modelListOrg);
         }**/
 
-        for(int a = 1;a < 7;a++){
+        for(int a = 1;a < 21;a++){
             modelListOrg = new model_list_org();
             modelListOrg.setOrg("Organization Name "+a);
             modelListOrg.setDesc("Categories of organization "+a);

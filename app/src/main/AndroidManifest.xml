@@ -30,14 +30,15 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="p">
+        <activity android:name=".activity.in_org.activity_organization"></activity>
         <activity
-            android:theme="@style/ScanQR"
             android:name=".activity.out_org.activity_scan_qr"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/ScanQR" />
         <activity
-            android:theme="@style/ScanQR"
             android:name=".activity.out_org.activity_scan_qr_2"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/ScanQR" />
         <activity
             android:name=".activity.out_org.activity_setting"
             android:screenOrientation="portrait"

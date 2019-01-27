@@ -32,8 +32,8 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import org.deadlock.oim.R;
-import org.deadlock.oim.adapter.adapter_home;
-import org.deadlock.oim.adapter.adapter_list_accounts;
+import org.deadlock.oim.adapter.out_org.adapter_home;
+import org.deadlock.oim.adapter.out_org.adapter_list_accounts;
 import org.deadlock.oim.data.data_session;
 import org.deadlock.oim.helper.helper_snackbar;
 import org.deadlock.oim.model.model_list_accounts;
@@ -383,6 +383,7 @@ public class activity_home_group extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 alertDialog.dismiss();
+                request_join();
             }
         });
 
@@ -509,7 +510,7 @@ public class activity_home_group extends AppCompatActivity
                     @Override
                     public void onFinish() {
                         dialog.dismiss();
-                        request_join();
+                        addAttachment();
                     }
                 }.start();
             }

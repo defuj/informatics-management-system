@@ -1,4 +1,4 @@
-package org.deadlock.oim.adapter;
+package org.deadlock.oim.adapter.out_org;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

@@ -1,7 +1,9 @@
-package org.deadlock.oim.adapter;
+package org.deadlock.oim.adapter.out_org;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import org.deadlock.oim.R;
+import org.deadlock.oim.activity.in_org.activity_organization;
 import org.deadlock.oim.helper.helper_data;
 import org.deadlock.oim.model.model_list_org;
 
@@ -21,6 +24,7 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class adapter_list_org extends RecyclerView.Adapter<adapter_list_org.ViewHolder> {
@@ -48,12 +52,6 @@ public class adapter_list_org extends RecyclerView.Adapter<adapter_list_org.View
         holder.desc.setText(orgs.get(position).getDesc());
         holder.nama.setText(orgs.get(position).getNama());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
         holder.toolbar.getMenu().clear();
         holder.toolbar.inflateMenu(R.menu.menu_content_list_org);
         holder.toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -99,7 +97,14 @@ public class adapter_list_org extends RecyclerView.Adapter<adapter_list_org.View
             }
         });
 
-        //holder.itemView.startAnimation(animation);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(new Intent(context, activity_organization.class),
+                       ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context).toBundle());
+
+            }
+        });
 
     }
 

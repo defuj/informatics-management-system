@@ -1,4 +1,4 @@
-package org.deadlock.oim.adapter;
+package org.deadlock.oim.adapter.out_org;
 
 import org.deadlock.oim.fragment.out_org.fragment_notifications;
 import org.deadlock.oim.fragment.out_org.fragment_organizations;
