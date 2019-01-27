@@ -35,6 +35,10 @@
             android:name=".activity.out_org.activity_scan_qr"
             android:screenOrientation="portrait"/>
         <activity
+            android:theme="@style/ScanQR"
+            android:name=".activity.out_org.activity_scan_qr_2"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".activity.out_org.activity_setting"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />

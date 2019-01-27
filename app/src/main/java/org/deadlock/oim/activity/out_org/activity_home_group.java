@@ -3,6 +3,7 @@ package org.deadlock.oim.activity.out_org;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -29,6 +30,8 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import org.deadlock.oim.R;
 import org.deadlock.oim.adapter.adapter_home;
@@ -41,6 +44,7 @@ import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -266,7 +270,7 @@ public class activity_home_group extends AppCompatActivity
 
     @SuppressLint("SetTextI18n")
     private void joinOrg(){
-        View viewroot = View.inflate(activity_home_group.this,R.layout.content_alert_dialog_join_org,null);
+        //View viewroot = View.inflate(activity_home_group.this,R.layout.content_alert_dialog_join_org,null);
         final EditText token = new EditText(this);
         token.findViewById(R.id.token_code);
         token.setText("Bismillah");
@@ -298,8 +302,10 @@ public class activity_home_group extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 //showSnackBar();
-                startActivity(new Intent(activity_home_group.this, activity_scan_qr.class),
-                        ActivityOptionsCompat.makeSceneTransitionAnimation(activity_home_group.this).toBundle());
+                //startActivity(new Intent(activity_home_group.this, activity_scan_qr.class),
+                        //ActivityOptionsCompat.makeSceneTransitionAnimation(activity_home_group.this).toBundle());
+                new IntentIntegrator(activity_home_group.this).setCaptureActivity(activity_scan_qr_2.class).initiateScan();
+
                 alertDialog.dismiss();
             }
         });
@@ -321,7 +327,7 @@ public class activity_home_group extends AppCompatActivity
             Toast.makeText(this,result_code,Toast.LENGTH_SHORT).show();
         }
 
-        /**if(token.getText().toString().isEmpty()){
+        /*if(token.getText().toString().isEmpty()){
             // jika token sudah terisi
             // verifikasi token
 
@@ -408,5 +414,67 @@ public class activity_home_group extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        //We will get scan results here
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        //check for null
+        if (result != null) {
+            if (result.getContents() != null) {
+                //Toast.makeText(this, "Scan Cancelled", Toast.LENGTH_LONG).show();
+                String konten = result.getContents();
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Scan Result");
+                builder.setMessage(konten);
+                //AlertDialog alertDialog = builder.create();
+                //alertDialog.show();
+
+                final ProgressDialog dialog = new ProgressDialog(activity_home_group.this);
+                dialog.setMessage("Verifying code");
+                dialog.show();
+
+                new CountDownTimer(5000, 1000) {
+                    @Override
+                    public void onTick(long l) {
+                        new CountDownTimer(2000, 1000) {
+                            @Override
+                            public void onTick(long l) {
+
+                            }
+
+                            @Override
+                            public void onFinish() {
+                                dialog.setMessage("Sending request");
+                            }
+                        }.start();
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        dialog.dismiss();
+                        request_join();
+                    }
+                }.start();
+            }
+
+            //else {
+                //show dialogue with result
+                //showResultDialogue(result.getContents());
+            //}
+        } else {
+            // This is important, otherwise the result will not be passed to the fragment
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    private void request_join(){
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        View view = View.inflate(this,R.layout.content_alert_dialog_request_sended,null);
+
+        dialog.setView(view);
+        AlertDialog alertDialog = dialog.create();
+        alertDialog.show();
     }
 }
