@@ -121,7 +121,78 @@
                             android:padding="16dp"
                             android:text="Leader of organization"
                             android:textColor="@color/white"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"
+                            android:visibility="gone" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="bottom"
+                            android:orientation="horizontal"
+                            android:padding="16dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageButton
+                                    android:id="@+id/imageButton3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/transparent"
+                                    app:srcCompat="@drawable/ic_people_white_24dp" />
+
+                                <TextView
+                                    android:id="@+id/showCountMember"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_marginRight="10dp"
+                                    android:fontFamily="@font/poppins"
+                                    android:text="50"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp" />
+
+                                <ImageButton
+                                    android:id="@+id/imageButton4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/transparent"
+                                    app:srcCompat="@drawable/ic_assessment_white_24dp" />
+
+                                <TextView
+                                    android:id="@+id/showCountAssigment"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_marginRight="10dp"
+                                    android:fontFamily="@font/poppins"
+                                    android:text="17"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp" />
+
+                                <ImageButton
+                                    android:id="@+id/imageButton5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/transparent"
+                                    app:srcCompat="@drawable/ic_archive_white_24dp" />
+
+                                <TextView
+                                    android:id="@+id/showCountArchive"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_marginRight="10dp"
+                                    android:fontFamily="@font/poppins"
+                                    android:text="197"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </RelativeLayout>
