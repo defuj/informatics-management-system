@@ -29,4 +29,4 @@ Thanks to </br>
 - Dede Eli Permana</br>
 
 </br></br>
-<b>Note : </b> This project is under developed.
+<b>Note : </b> This project is under developement.
