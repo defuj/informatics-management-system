@@ -15,7 +15,7 @@ This project is dedicated to <a href="https://stmik-sumedang.ac.id">STMIK Sumeda
 <img src="https://raw.githubusercontent.com/defuj/informatics-management-system/master/preview/12.png" width="320" float="left"></img>
 <img src="https://raw.githubusercontent.com/defuj/informatics-management-system/master/preview/13.png" width="320" float="left"></img>
 </br></br>
-Developed by the student study group, DeadLock
+Developed by the student study group, DeadLock</br>
 <img src="https://raw.githubusercontent.com/defuj/informatics-management-system/master/preview/deadlcok.png" width="320" align="center"></img>
 </br>
 <p>Dede Fuji Abdul</p>
