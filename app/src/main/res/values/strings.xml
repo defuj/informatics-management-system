@@ -30,6 +30,10 @@
     <string name="terms">I agree with terms and privacy policies to create a new group. <u>Learn more.</u></string>
     <string name="join_text">You will send a request to join the organization. Please enter the token code from the organization to join.</string>
     <string name="text_scanQRCode"><b>Update</b> : You can scan QR Code to request join.</string>
+    <string name="title_activity_organization">activity_organization</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

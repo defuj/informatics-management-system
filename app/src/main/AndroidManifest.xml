@@ -30,7 +30,10 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="p">
-        <activity android:name=".activity.in_org.activity_organization"></activity>
+        <activity
+            android:name=".activity.in_org.activity_organization"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.FullscreenTheme"/>
         <activity
             android:name=".activity.out_org.activity_scan_qr"
             android:screenOrientation="portrait"
@@ -38,7 +41,7 @@
         <activity
             android:name=".activity.out_org.activity_scan_qr_2"
             android:screenOrientation="portrait"
-            android:theme="@style/ScanQR" />
+            android:theme="@style/AppTheme.FullscreenTheme"/>
         <activity
             android:name=".activity.out_org.activity_setting"
             android:screenOrientation="portrait"

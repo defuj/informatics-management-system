@@ -8,6 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="HomeOrg" parent="AppTheme">
+        <item name="actionBarSize">50dip</item>
+        <item name="android:windowTitleSize">23sp</item>
+        <item name="colorControlNormal">@color/black_80_transparent</item>
+        <item name="colorPrimary">@color/white</item>
+    </style>
+
     <style name="ScanQR" parent="AppTheme">
         <item name="actionBarSize">50dip</item>
         <item name="android:windowTitleSize">23sp</item>
@@ -47,6 +54,12 @@
     <style name="CustomToolbar" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="tint">@color/black_overlay</item>
         <item name="color">@color/black_overlay</item>
+        <item name="spinBars">true</item>
+    </style>
+
+    <style name="QRToolbar" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="tint">@color/white</item>
+        <item name="color">@color/white</item>
         <item name="spinBars">true</item>
     </style>
 

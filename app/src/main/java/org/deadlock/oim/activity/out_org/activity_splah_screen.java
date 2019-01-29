@@ -17,13 +17,19 @@ public class activity_splah_screen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splah_screen);
-        getWindow().setAllowEnterTransitionOverlap(true);
-        getWindow().setAllowReturnTransitionOverlap(true);
 
         SharedPreferences sharedPreferences = getSharedPreferences(data_session.SHARED_PREF_NAME, 0);
         loggedIn = sharedPreferences.getBoolean(data_session.LOGGEDIN_SHARED_PREF, false);
-        CekStatusLogin();
+
+        if(loggedIn){
+            startActivity(new Intent(activity_splah_screen.this, activity_home_group.class),
+                    ActivityOptionsCompat.makeSceneTransitionAnimation(activity_splah_screen.this).toBundle());
+        }else{
+            setContentView(R.layout.activity_splah_screen);
+            getWindow().setAllowEnterTransitionOverlap(true);
+            getWindow().setAllowReturnTransitionOverlap(true);
+            CekStatusLogin();
+        }
     }
 
     private void CekStatusLogin() {

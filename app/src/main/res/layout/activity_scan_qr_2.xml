@@ -1,56 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.out_org.activity_scan_qr_2">
+    tools:context=".activity.out_org.activity_scan_qr_2"
+    android:animateLayoutChanges="true">
 
-    <com.journeyapps.barcodescanner.DecoratedBarcodeView
-        android:id="@+id/zxing_barcode_scanner2"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:zxing_scanner_layout="@layout/custom_scanner" />
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <RelativeLayout
+        <com.journeyapps.barcodescanner.DecoratedBarcodeView
+            android:id="@+id/zxing_barcode_scanner2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
+            android:layout_height="match_parent"
+            app:zxing_scanner_layout="@layout/custom_scanner" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="270dp"
-                    android:layout_height="250dp"
-                    android:background="@drawable/bg_scan"
-                    android:gravity="bottom|center_horizontal" />
-            </LinearLayout>
-            <LinearLayout
+                    <TextView
+                        android:layout_width="270dp"
+                        android:layout_height="250dp"
+                        android:background="@drawable/bg_scan"
+                        android:gravity="bottom|center_horizontal" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="280dp"
+                        android:layout_height="345dp"
+                        android:fontFamily="@font/poppins"
+                        android:gravity="bottom|center_horizontal"
+                        android:text="SNAP QR CODE"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/transparent"
+            app:elevation="0dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_news"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="280dp"
-                    android:layout_height="345dp"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="bottom|center_horizontal"
-                    android:text="SNAP QR CODE"
-                    android:textColor="@color/white"
-                    android:textSize="30sp" />
-            </LinearLayout>
-        </RelativeLayout>
+                android:layout_height="50dp"
+                android:background="@color/transparent"
+                android:elevation="0dp"
+                android:theme="@style/QRToolbar"
+                app:contentInsetStartWithNavigation="0dp"
+                app:navigationIcon="?attr/homeAsUpIndicator"
+                app:titleTextColor="@color/white" />
+        </com.google.android.material.appbar.AppBarLayout>
+    </RelativeLayout>
 
 
-    </LinearLayout>
-
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

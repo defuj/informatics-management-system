@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,7 +15,6 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 import org.deadlock.oim.R;
 import org.deadlock.oim.activity.in_org.activity_organization;
-import org.deadlock.oim.helper.helper_data;
 import org.deadlock.oim.model.model_list_org;
 
 import java.util.ArrayList;
@@ -45,8 +43,8 @@ public class adapter_list_org extends RecyclerView.Adapter<adapter_list_org.View
 
     @Override
     public void onBindViewHolder(@NonNull final adapter_list_org.ViewHolder holder, final int position) {
-        helper_data DBHelper = new helper_data(context);
-        final SQLiteDatabase db = DBHelper.getWritableDatabase();
+        //helper_data DBHelper = new helper_data(context);
+        //final SQLiteDatabase db = DBHelper.getWritableDatabase();
 
         holder.org.setText(orgs.get(position).getOrg());
         holder.desc.setText(orgs.get(position).getDesc());
