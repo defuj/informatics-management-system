@@ -1,5 +1,5 @@
 # Informatics Management System - ORG Version
-This project is dedicated to STMIK Sumedang, for the management of small-scale organization information system.
+This project is dedicated to <a href="https://stmik-sumedang.ac.id">STMIK Sumedang</a>, for the management of small-scale organization information system.
 
 <img src="https://raw.githubusercontent.com/defuj/informatics-management-system/master/preview/1.png" width="320" float="left"></img>
 <img src="https://raw.githubusercontent.com/defuj/informatics-management-system/master/preview/2.png" width="320" float="left"></img>
@@ -16,7 +16,8 @@ This project is dedicated to STMIK Sumedang, for the management of small-scale o
 <img src="https://raw.githubusercontent.com/defuj/informatics-management-system/master/preview/13.png" width="320" float="left"></img>
 </br></br>
 Developed by the student study group, DeadLock
-<img src="https://raw.githubusercontent.com/defuj/informatics-management-system/master/preview/deadlock.png" width="320" align="center"></br>
+<img src="https://raw.githubusercontent.com/defuj/informatics-management-system/master/preview/deadlcok.png" width="320" align="center"></img>
+</br>
 <p>Dede Fuji Abdul</p>
 <p>Aceng Abdul Wahid</p>
 <p>Fakih</p>
