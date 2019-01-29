@@ -16,17 +16,17 @@ This project is dedicated to <a href="https://stmik-sumedang.ac.id">STMIK Sumeda
 <img src="https://raw.githubusercontent.com/defuj/informatics-management-system/master/preview/13.png" width="320" float="left"></img>
 </br></br>
 Developed by the student study group, DeadLock</br></br>
-<img src="https://raw.githubusercontent.com/defuj/informatics-management-system/master/preview/deadlcok.png" width="320" align="center"></img>
+<p><img src="https://raw.githubusercontent.com/defuj/informatics-management-system/master/preview/deadlcok.png" width="320" align="middle"></img></p>
 </br></br>
-Thanks to </br></br>
-Dede Fuji Abdul</br>
-Aceng Abdul Wahid</br>
-Fakih</br>
-Ihsan Budiman</br>
-Deden Juliandi</br>
-Siti Wihdah</br>
-Cucum Elianti</br>
-Dede Eli Permana</br>
+Thanks to </br>
+- Dede Fuji Abdul</br>
+- Aceng Abdul Wahid</br>
+- Fakih</br>
+- Ihsan Budiman</br>
+- Deden Juliandi</br>
+- Siti Wihdah</br>
+- Cucum Elianti</br>
+- Dede Eli Permana</br>
 
 </br></br>
 <b>Note : </b> This project is under developed.
