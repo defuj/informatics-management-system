@@ -1,6 +1,7 @@
 # Informatics Management System - ORG Version
 This project is dedicated to <a href="https://stmik-sumedang.ac.id">STMIK Sumedang</a>, for the management of small-scale organization information system.
-
+</br></br>
+Sample Preview :</br></br>
 <img src="https://raw.githubusercontent.com/defuj/informatics-management-system/master/preview/1.png" width="320" float="left"></img>
 <img src="https://raw.githubusercontent.com/defuj/informatics-management-system/master/preview/2.png" width="320" float="left"></img></br>
 <img src="https://raw.githubusercontent.com/defuj/informatics-management-system/master/preview/3.png" width="320" float="left"></img>
