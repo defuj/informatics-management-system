@@ -4,8 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,29 +27,16 @@ import androidx.core.app.ActivityOptionsCompat;
 
 public class activity_sign extends BaseApp {
 
-    private SignInButton signInButton;
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 12345;
-    private String nama,email,url;
-    private SQLiteDatabase db;
-    private Cursor cursor;
+    private String url;
+
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign);
-
-        /**helper_data DBHelper = new helper_data(this);
-        db = DBHelper.getWritableDatabase();
-
-        for(int a =1;a<=5;a++){
-            db.execSQL("insert into orgs values(" +
-                    a + ",'" +
-                    String.valueOf("Organization Name "+a) + "','" +
-                    String.valueOf("Organization categories "+a) + "','" +
-                    String.valueOf("This is sample for organizations description "+a) + "')");
-        }**/
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -62,9 +47,9 @@ public class activity_sign extends BaseApp {
                 .build();
         mGoogleApiClient.connect();
 
-        signInButton = this.findViewById(R.id.sign_in_button);
+        SignInButton signInButton = this.findViewById(R.id.sign_in_button);
 
-        TextView textView= (TextView)signInButton.getChildAt(0);
+        TextView textView= (TextView) signInButton.getChildAt(0);
         textView.setText("Sign In");
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
@@ -98,8 +83,8 @@ public class activity_sign extends BaseApp {
 
             GoogleSignInAccount acct = result.getSignInAccount();
             Log.e("SUKSES", "display name: " + Objects.requireNonNull(acct).getDisplayName());
-            nama= acct.getDisplayName();
-            email = acct.getEmail();
+            String nama = acct.getDisplayName();
+            String email = acct.getEmail();
             if (acct.getPhotoUrl() !=null){
                 url  = acct.getPhotoUrl().toString();
             }
@@ -112,16 +97,6 @@ public class activity_sign extends BaseApp {
             editor.putString(data_session.LOGIN, "LOGEDIN");
             editor.putBoolean(data_session.LOGGEDIN_SHARED_PREF, true);
             editor.apply();
-
-            //save_data_account();
-            //save data_session ke database server dan database local android
-
-            //insert data_session accounts ke database local android
-            db.execSQL("insert into accounts values('" +
-                    String.valueOf(data_session.EMAIL) + "','" +
-                    String.valueOf(data_session.NAMA) + "','" +
-                    String.valueOf(data_session.FOTO) + "')");
-
 
             startActivity(new Intent(activity_sign.this, activity_home_group.class),
                     ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());

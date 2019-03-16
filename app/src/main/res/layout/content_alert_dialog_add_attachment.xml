@@ -65,12 +65,22 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnSetRequest"
-            android:layout_width="wrap_content"
+            android:id="@+id/btnSkip"
+            android:layout_width="65dp"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
             android:fontFamily="@font/roboto"
-            android:text="Set Request"
+            android:text="Skip"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent" />
+
+        <Button
+            android:id="@+id/btnSetRequest"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:fontFamily="@font/roboto"
+            android:text="Upload"
             android:textAllCaps="false"
             android:textColor="@color/colorAccent" />
     </LinearLayout>

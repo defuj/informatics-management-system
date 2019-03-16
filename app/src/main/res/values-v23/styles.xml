@@ -6,5 +6,6 @@
         <item name="titleTextColor">@color/black_80_transparent</item>
         <item name="android:windowTitleSize">24sp</item>
         <item name="fontFamily">@font/source_sanspro_regular</item>
+        <item name="android:fontFamily">@font/poppins</item>
     </style>
 </resources>

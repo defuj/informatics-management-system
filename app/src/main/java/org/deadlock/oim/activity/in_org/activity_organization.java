@@ -1,12 +1,13 @@
 package org.deadlock.oim.activity.in_org;
 
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 
 import org.deadlock.oim.R;
+
+import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -24,6 +25,8 @@ public class activity_organization extends AppCompatActivity
         setContentView(R.layout.activity_organization);
         Toolbar toolbar = findViewById(R.id.toolbar_org);
         setSupportActionBar(toolbar);
+
+        Objects.requireNonNull(getSupportActionBar()).setElevation(0);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_org);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -49,10 +52,10 @@ public class activity_organization extends AppCompatActivity
         }
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.activity_organization, menu);
+        getMenuInflater().inflate(R.menu.menu_organization, menu);
         return true;
     }
 
@@ -69,7 +72,7 @@ public class activity_organization extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    } */
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

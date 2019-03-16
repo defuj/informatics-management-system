@@ -42,16 +42,15 @@
                     android:text="Organization"
                     android:textColor="@color/black_60_transparent"
                     android:textSize="20sp"
-                    android:visibility="visible" />
+                    android:visibility="gone" />
 
                 <ImageButton
-                    android:id="@+id/add_group"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
                     android:contentDescription="TODO"
                     android:padding="16dp"
-                    app:srcCompat="@drawable/ic_add_black_24dp" />
+                    app:srcCompat="@drawable/ic_extension_black_24dp" />
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
 

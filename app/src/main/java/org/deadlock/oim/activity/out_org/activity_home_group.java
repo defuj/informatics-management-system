@@ -316,33 +316,6 @@ public class activity_home_group extends AppCompatActivity
     }
 
     private void verifyToken(){
-        /*String result_code;
-        View views = View.inflate(activity_home_group.this,R.layout.content_alert_dialog_join_org,null);
-        final EditText token = views.findViewById(R.id.token_code);
-        Drawable icon = getResources().getDrawable(R.drawable.ic_check_circle_black_24dp);
-        icon.setBounds(0,0,icon.getIntrinsicWidth(),icon.getIntrinsicHeight());
-
-        result_code = String.valueOf(token.getText());
-        if(result_code.isEmpty()){
-            Toast.makeText(this,result_code,Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(this,result_code,Toast.LENGTH_SHORT).show();
-        }*/
-
-        /*if(token.getText().toString().isEmpty()){
-            // jika token sudah terisi
-            // verifikasi token
-
-            Toast.makeText(this,"Token code still empty",Toast.LENGTH_SHORT).show();
-            icon.setBounds(0,0,icon.getIntrinsicWidth(),icon.getIntrinsicHeight());
-            token.setError("Token code must be entered");
-            token.requestFocus();
-        }else{
-            // jika token belum ada
-            Toast.makeText(this,"Token code not empty",Toast.LENGTH_SHORT).show();
-            //showSnackBar();
-        } **/
-
         final ProgressDialog dialog = new ProgressDialog(activity_home_group.this);
         dialog.setMessage("Verifying code");
         dialog.show();
@@ -378,14 +351,42 @@ public class activity_home_group extends AppCompatActivity
         dialog.setView(view);
 
         final AlertDialog alertDialog = dialog.create();
-        Button finish = view.findViewById(R.id.btnSetRequest);
-        finish.setOnClickListener(new View.OnClickListener() {
+        Button upload = view.findViewById(R.id.btnSetRequest);
+        upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.hide();
+
+                //uploading
+                final ProgressDialog dialog = new ProgressDialog(activity_home_group.this);
+                dialog.setMessage("Uploading...");
+                dialog.show();
+
+                new CountDownTimer(5000, 1000) {
+                    @Override
+                    public void onTick(long l) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        alertDialog.dismiss();
+                        dialog.dismiss();
+                        request_join();
+                    }
+                }.start();
+            }
+        });
+
+        Button skip = view.findViewById(R.id.btnSkip);
+        skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 alertDialog.dismiss();
                 request_join();
             }
         });
+
 
         ImageButton add = view.findViewById(R.id.addAttachments);
         add.setOnClickListener(new View.OnClickListener() {
