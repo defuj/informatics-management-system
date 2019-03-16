@@ -1,7 +1,5 @@
 package org.deadlock.oim.activity.out_org;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -11,16 +9,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.provider.Settings;
-import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,13 +28,9 @@ import com.google.zxing.integration.android.IntentResult;
 
 import org.deadlock.oim.R;
 import org.deadlock.oim.adapter.out_org.adapter_home;
-import org.deadlock.oim.adapter.out_org.adapter_list_accounts;
 import org.deadlock.oim.data.data_session;
 import org.deadlock.oim.helper.helper_snackbar;
-import org.deadlock.oim.model.model_list_accounts;
-
-import java.util.ArrayList;
-import java.util.regex.Pattern;
+import org.deadlock.oim.network.net;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -50,8 +41,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
@@ -64,6 +53,7 @@ public class activity_home_group extends AppCompatActivity
     private Button BtndropAccount;
     private DrawerLayout drawer;
     private int current_position = 0;
+    private net network;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +63,8 @@ public class activity_home_group extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        network = new net();
+
         drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
@@ -80,7 +72,6 @@ public class activity_home_group extends AppCompatActivity
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
                 dropAccount = true;
-                dropAccounts();
             }
         };
         drawer.addDrawerListener(toggle);
@@ -110,17 +101,7 @@ public class activity_home_group extends AppCompatActivity
             }
         });
 
-        //View headerView = navigationView.getHeaderView(0);
-        BtndropAccount = findViewById(R.id.drop_account);
-        BtndropAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dropAccounts();
-            }
-        });
-
         loadNavigationFunction();
-        loadAccounts();
         loadData();
         loadViewPager();
     }
@@ -145,49 +126,6 @@ public class activity_home_group extends AppCompatActivity
         });
     }
 
-    private void dropAccounts(){
-        if(dropAccount){
-            LinearLayout linearLayout = findViewById(R.id.layout_account_full);
-            linearLayout.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-            LinearLayout layoutAccount = findViewById(R.id.layout_account);
-            layoutAccount.setVisibility(View.GONE);
-            dropAccount = false;
-            BtndropAccount.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0, R.drawable.ic_arrow_drop_down_black_24dp,0);
-        }else{
-            LinearLayout linearLayout = findViewById(R.id.layout_account_full);
-            linearLayout.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
-            LinearLayout layoutAccount = findViewById(R.id.layout_account);
-            layoutAccount.setVisibility(View.VISIBLE);
-            dropAccount = true;
-            BtndropAccount.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0, R.drawable.ic_arrow_drop_up_black_24dp,0);
-        }
-    }
-
-    private void loadAccounts() {
-        dropAccounts();
-        //View headerView = navigationView.getHeaderView(0);
-        AccountManager manager = (AccountManager)getSystemService(ACCOUNT_SERVICE);
-        Account[] list = manager.getAccounts();
-
-        RecyclerView listAccount = findViewById(R.id.list_account);
-        listAccount.setLayoutManager(new LinearLayoutManager(this));
-
-        Pattern gmailPattern = Patterns.EMAIL_ADDRESS;
-        ArrayList<model_list_accounts> accounts = new ArrayList<>();
-        //ContactsContract.Profile.PHOTO_THUMBNAIL_URI;
-
-        for(Account akun: list){
-            if(gmailPattern.matcher(akun.name).matches()){
-                model_list_accounts modelListAccounts = new model_list_accounts();
-                modelListAccounts.setEmail(akun.name);
-                modelListAccounts.setFoto("");
-                accounts.add(modelListAccounts);
-            }
-        }
-
-        adapter_list_accounts adapterListAccounts = new adapter_list_accounts(accounts,this);
-        listAccount.setAdapter(adapterListAccounts);
-    }
 
     private void loadData() {
         TextView textnama = findViewById(R.id.namatext);
@@ -237,9 +175,12 @@ public class activity_home_group extends AppCompatActivity
 
             @Override
             public void onFinish() {
-                loadViewPager();
-                homeSwipeRefresh.setRefreshing(false);
-
+                if(network.status()){
+                    loadViewPager();
+                    homeSwipeRefresh.setRefreshing(false);
+                }else{
+                    homeSwipeRefresh.setRefreshing(false);
+                }
             }
         }.start();
     }
