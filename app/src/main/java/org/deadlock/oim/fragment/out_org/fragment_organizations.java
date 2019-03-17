@@ -68,7 +68,7 @@ public class fragment_organizations extends Fragment {
             orgs.add(modelListOrg);
         }**/
 
-        for(int a = 1;a < 21;a++){
+        for(int a = 1;a < 4;a++){
             modelListOrg = new model_list_org();
             modelListOrg.setOrg("Organization Name "+a);
             modelListOrg.setDesc("Categories of organization "+a);

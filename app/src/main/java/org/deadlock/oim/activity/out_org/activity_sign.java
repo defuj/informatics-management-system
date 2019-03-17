@@ -20,6 +20,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.deadlock.oim.R;
 import org.deadlock.oim.data.data_session;
+import org.deadlock.oim.network.net;
 
 import java.util.Objects;
 
@@ -30,6 +31,7 @@ public class activity_sign extends BaseApp {
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 12345;
     private String url;
+    private net network;
 
 
     @SuppressLint("SetTextI18n")
@@ -37,6 +39,7 @@ public class activity_sign extends BaseApp {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign);
+        network = new net();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()

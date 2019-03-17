@@ -2,13 +2,9 @@ package org.deadlock.oim.activity.out_org;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -16,11 +12,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -28,9 +22,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 import org.deadlock.oim.R;
 import org.deadlock.oim.adapter.out_org.adapter_home;
-import org.deadlock.oim.data.data_session;
 import org.deadlock.oim.helper.helper_snackbar;
-import org.deadlock.oim.network.net;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -49,11 +41,8 @@ public class activity_home_group extends AppCompatActivity
     private adapter_home adapterHome;
     private ViewPager homeViewPager;
     private SwipeRefreshLayout homeSwipeRefresh;
-    private boolean dropAccount = true;
-    private Button BtndropAccount;
-    private DrawerLayout drawer;
     private int current_position = 0;
-    private net network;
+    //private net network;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,17 +52,11 @@ public class activity_home_group extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        network = new net();
+        //network = new net();
 
-        drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-                dropAccount = true;
-            }
-        };
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.black_60_transparent));
@@ -101,33 +84,12 @@ public class activity_home_group extends AppCompatActivity
             }
         });
 
-        loadNavigationFunction();
-        loadData();
+        //loadData();
         loadViewPager();
     }
 
-    private void loadNavigationFunction() {
-        NavigationView navSecond = findViewById(R.id.navSecond);
-        navSecond.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                if (id == R.id.nav_add_account){
-                    startActivity(new Intent(Settings.ACTION_ADD_ACCOUNT)
-                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK).putExtra(Settings.EXTRA_ACCOUNT_TYPES,new String[] {"com.google"}));
-                    drawer.closeDrawer(GravityCompat.START);
-                }else if (id == R.id.nav_manage_account){
-                    startActivityForResult(new Intent(Settings.ACTION_SYNC_SETTINGS),0);
-                    drawer.closeDrawer(GravityCompat.START);
-                }
 
-                return true;
-            }
-        });
-    }
-
-
-    private void loadData() {
+    /*private void loadData() {
         TextView textnama = findViewById(R.id.namatext);
         TextView textemail = findViewById(R.id.emailtext);
         SimpleDraweeView currentFoto = findViewById(R.id.currentAccountLogin);
@@ -138,7 +100,7 @@ public class activity_home_group extends AppCompatActivity
         currentFoto.setImageURI(Uri.parse(String.valueOf(sharedPreferences.getString(data_session.FOTO,"Not Available"))));
         //Data_account data = new Data_account(name,email);
         //binding.setData(data);
-    }
+    } */
 
     @SuppressLint("CutPasteId")
     private void loadViewPager() {
@@ -175,40 +137,15 @@ public class activity_home_group extends AppCompatActivity
 
             @Override
             public void onFinish() {
-                if(network.status()){
-                    loadViewPager();
-                    homeSwipeRefresh.setRefreshing(false);
-                }else{
-                    homeSwipeRefresh.setRefreshing(false);
-                }
+                loadViewPager();
+                homeSwipeRefresh.setRefreshing(false);
             }
         }.start();
     }
 
     private void addOrg(){
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        View view = View.inflate(this,R.layout.content_alert_dialog_add_org,null);
-
-        dialog.setView(view);
-        final AlertDialog alertDialog = dialog.create();
-        Button cancel = view.findViewById(R.id.btnNextTime);
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                alertDialog.dismiss();
-            }
-        });
-
-        Button ok = view.findViewById(R.id.btnCreate);
-        ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showSnackBar();
-                alertDialog.dismiss();
-            }
-        });
-
-        alertDialog.show();
+        startActivity(new Intent(activity_home_group.this, activity_add_org.class),
+                ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
     }
 
     @SuppressLint("SetTextI18n")
@@ -244,9 +181,6 @@ public class activity_home_group extends AppCompatActivity
         ScanQR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //showSnackBar();
-                //startActivity(new Intent(activity_home_group.this, activity_scan_qr.class),
-                        //ActivityOptionsCompat.makeSceneTransitionAnimation(activity_home_group.this).toBundle());
                 new IntentIntegrator(activity_home_group.this).setCaptureActivity(activity_scan_qr_2.class).initiateScan();
 
                 alertDialog.dismiss();
@@ -400,8 +334,6 @@ public class activity_home_group extends AppCompatActivity
             homeViewPager.setCurrentItem(1, false);
             adapterHome.notifyDataSetChanged();
             current_position = 1;
-        } else if (id == R.id.nav_todo) {
-            showSnackBar();
         } else if (id == R.id.nav_setting) {
             startActivity(new Intent(activity_home_group.this, activity_setting.class),
                     ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.widget.Toast;
 
 import org.deadlock.oim.activity.out_org.BaseApp;
 
@@ -19,6 +20,7 @@ public class net extends BaseApp {
         }
         else {
             connect = false;
+            Toast.makeText(this,"no connection", Toast.LENGTH_SHORT).show();
         }
         return connect;
     }

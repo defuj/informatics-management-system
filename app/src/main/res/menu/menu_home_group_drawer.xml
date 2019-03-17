@@ -8,7 +8,7 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home_black_24dp"
             android:title="Organizations"
-            android:checked="true"/>
+            android:checked="true" />
         <item
             android:id="@+id/nav_request"
             android:icon="@drawable/ic_contact_mail_black_24dp"
@@ -20,23 +20,20 @@
     </group>
 
     <group android:checkableBehavior="none">
-        <item android:title="My Organizations">
+        <item android:title="Other">
             <menu>
                 <item
-                    android:id="@+id/nav_todo"
-                    android:icon="@drawable/ic_assignment_black_24dp"
-                    android:title="To-do" />
+                    android:id="@+id/nav_setting"
+                    android:icon="@drawable/ic_settings_black_24dp"
+                    android:title="Settings" />
+                <item
+                    android:id="@+id/nav_help"
+                    android:icon="@drawable/ic_help_black_24dp"
+                    android:title="Help" />
             </menu>
         </item>
     </group>
 
-    <item
-        android:id="@+id/nav_setting"
-        android:icon="@drawable/ic_settings_black_24dp"
-        android:title="Settings" />
-    <item
-        android:id="@+id/nav_help"
-        android:icon="@drawable/ic_help_black_24dp"
-        android:title="Help" />
+
 
 </menu>
