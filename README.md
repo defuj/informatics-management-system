@@ -3,9 +3,6 @@ This project is dedicated to <a href="https://stmik-sumedang.ac.id">STMIK Sumeda
 </br><b>Note : </b> This project is under developement.
 </br></br>
 Sample Preview :</br></br>
-<img src="https://raw.githubusercontent.com/defuj/informatics-management-system/master/preview/1.png" width="320" float="left"></img>
-<img src="https://raw.githubusercontent.com/defuj/informatics-management-system/master/preview/2.png" width="320" float="left"></img></br>
-<img src="https://raw.githubusercontent.com/defuj/informatics-management-system/master/preview/3.png" width="320" float="left"></img>
 <img src="https://raw.githubusercontent.com/defuj/informatics-management-system/master/preview/4.png" width="320" float="left"></img></br>
 <img src="https://raw.githubusercontent.com/defuj/informatics-management-system/master/preview/5.png" width="320" float="left"></img>
 <img src="https://raw.githubusercontent.com/defuj/informatics-management-system/master/preview/6.png" width="320" float="left"></img></br>
