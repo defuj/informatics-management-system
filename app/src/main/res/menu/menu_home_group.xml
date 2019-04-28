@@ -6,14 +6,34 @@
         android:title="@string/join"
         app:showAsAction="never" />
     <item
+        android:id="@+id/action_requested"
+        android:title="@string/my_request"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_notif"
+        android:title="@string/notifications"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/action_refresh"
         android:orderInCategory="100"
         android:title="@string/refresh"
+        android:visible="false"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/action_account"
+        android:orderInCategory="100"
+        android:title="@string/account"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_logout"
+        android:orderInCategory="100"
+        android:title="@string/logout"
+        app:showAsAction="never" />
     <item
         android:id="@+id/action_send"
         android:orderInCategory="100"
         android:title="@string/send_feedback"
+        android:visible="false"
         app:showAsAction="never" />
 </menu>

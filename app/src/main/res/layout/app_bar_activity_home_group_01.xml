@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    tools:context=".activity.out_org.activity_home_group">
+    tools:context=".activity.out_org.activity_home_group_02">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -43,29 +43,37 @@
                     android:id="@+id/textView28"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins_medium"
+                    android:fontFamily="@font/roboto"
                     android:gravity="center_vertical"
-                    android:text="IMaSys"
+                    android:text="My"
                     android:textColor="@color/black_60_transparent"
                     android:textSize="20sp"
                     android:visibility="visible" />
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/txtTitle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="6dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/poppins"
+                    android:fontFamily="@font/roboto_medium"
                     android:gravity="center_vertical"
-                    android:text="Org"
+                    android:text="Organizations"
                     android:textColor="@color/black_60_transparent"
                     android:textSize="20sp"
                     android:visibility="visible" />
 
                 <ImageButton
+                    android:id="@+id/see_notif"
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="TODO"
+                    android:padding="16dp"
+                    app:srcCompat="@drawable/ic_notifications_none_black_24dp" />
+
+                <ImageButton
                     android:id="@+id/add_group"
-                    android:layout_width="wrap_content"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
                     android:contentDescription="TODO"

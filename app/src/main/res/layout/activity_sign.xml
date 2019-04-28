@@ -69,7 +69,7 @@
                         android:layout_marginBottom="10dp"
                         android:fontFamily="@font/poppins_medium"
                         android:gravity="center"
-                        android:text="IMaSys "
+                        android:text="DeadLockID "
                         android:textSize="24sp" />
 
                     <TextView
@@ -89,7 +89,7 @@
                     android:layout_marginBottom="15dp"
                     android:fontFamily="@font/source_sanspro_regular"
                     android:gravity="center"
-                    android:text="IMaSys Organizations helps manage informations from your organizations."
+                    android:text="DeadLockID Organizations version helps manage informations from your organizations."
                     android:textSize="17sp" />
 
                 <Button

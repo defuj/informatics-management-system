@@ -68,11 +68,22 @@ public class fragment_organizations extends Fragment {
             orgs.add(modelListOrg);
         }**/
 
-        for(int a = 1;a < 4;a++){
+        for(int a = 4;a > 0;a--){
             modelListOrg = new model_list_org();
-            modelListOrg.setOrg("Organization Name "+a);
-            modelListOrg.setDesc("Categories of organization "+a);
-            modelListOrg.setNama("Some words as a simple description text of organization");
+            modelListOrg.setOrg("Organization Name #"+a);
+            modelListOrg.setDesc("#categories "+a);
+            modelListOrg.setColor("#FFFFFF");
+
+            if(a == 1){
+                modelListOrg.setTheme("");
+            }else if(a == 2){
+                modelListOrg.setTheme(""); //Orange
+            }else if(a == 3){
+                modelListOrg.setTheme(""); //Blue
+            }else if(a == 4){
+                modelListOrg.setTheme(""); //Purple
+            }
+
             orgs.add(modelListOrg);
         }
 
@@ -85,14 +96,14 @@ public class fragment_organizations extends Fragment {
     }
 
     public void addORG(){
-        /**orgs = new ArrayList<>();
+        /*orgs = new ArrayList<>();
         modelListOrg = new model_list_org();
         modelListOrg.setOrg("Organization Name NEWS");
         modelListOrg.setDesc("Type of organizations");
         modelListOrg.setNama("Name of organization leader");
         orgs.add(modelListOrg);
         adapterListOrg.notifyItemInserted(orgs.size()-1);
-        adapterListOrg.notifyDataSetChanged(); **/
+        adapterListOrg.notifyDataSetChanged(); */
     }
 
 

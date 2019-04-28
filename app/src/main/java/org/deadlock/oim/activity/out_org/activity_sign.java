@@ -101,7 +101,7 @@ public class activity_sign extends BaseApp {
             editor.putBoolean(data_session.LOGGEDIN_SHARED_PREF, true);
             editor.apply();
 
-            startActivity(new Intent(activity_sign.this, activity_home_group.class),
+            startActivity(new Intent(activity_sign.this, activity_home_group_03.class),
                     ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
         }
     }

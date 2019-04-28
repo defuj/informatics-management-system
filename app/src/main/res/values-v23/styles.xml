@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="CustomToolbar" parent="Widget.AppCompat.Toolbar">
+    <style name="CustomToolbar" parent="Base.Widget.AppCompat.Toolbar">
         <item name="tint">@color/black_overlay</item>
         <item name="titleTextColor">@color/black_80_transparent</item>
         <item name="android:windowTitleSize">24sp</item>

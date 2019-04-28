@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Warna Pilihan -->
+    <color name="w_yellow">#FFDE17</color>
+    <color name="w_blue">#32B2DF</color>
+    <color name="w_purple">#B32BB3</color>
+    <color name="w_blue_dark">#1B70C0</color>
+    <color name="w_orange_dark">#E16410</color>
+    <color name="w_sky_blue">#3DBEA0</color>
+    <color name="w_pink">#E52D47</color>
+    <color name="w_green">#86C12B</color>
+    <color name="w_orange">#F9A02C</color>
+
     <color name="colorPrimary">#FF5722</color>
     <!--<color name="colorPrimaryDark">#00574B</color>-->
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FF5722</color>
-
     <color name="white">#ffffff</color>
-
     <color name="black_overlay">#66000000</color>
 
     <color name="black_60_transparent">#96000000</color>

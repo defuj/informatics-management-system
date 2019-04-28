@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -57,7 +57,17 @@
         <item name="android:fontFamily">@font/poppins</item>
     </style>
 
-    <style name="CustomToolbar" parent="Widget.AppCompat.DrawerArrowToggle">
+    <style name="AppTheme.NoActionBar_03">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
+    <style name="CustomToolbar" parent="Base.Widget.AppCompat.DrawerArrowToggle">
         <item name="tint">@color/black_overlay</item>
         <item name="color">@color/black_overlay</item>
         <item name="spinBars">true</item>
@@ -71,16 +81,58 @@
         <item name="android:fontFamily">@font/poppins</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+    <style name="AppTheme.AppBarOverlay" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:fontFamily">@font/poppins</item>
     </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" >
+    <style name="AppTheme.PopupOverlay" parent="Base.ThemeOverlay.AppCompat.Light" >
         <item name="android:fontFamily">@font/poppins</item>
     </style>
 
     <style name="NavigationDrawer">
         <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="tabs" parent="Base.TextAppearance.AppCompat">
+        <item name="android:textColor">@color/black_60_transparent</item>
+        <item name="android:visibility">visible</item>
+    </style>
+
+    <style name="alertDialogTheme" parent="android:Theme.Holo.Dialog">
+        <item name="android:alertDialogStyle">@style/CustomAlertDialogStyle</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="CustomAlertDialogStyle">
+        <item name="android:bottomBright">@android:color/transparent</item>
+        <item name="android:bottomDark">@android:color/transparent</item>
+        <item name="android:bottomMedium">@android:color/transparent</item>
+        <item name="android:centerBright">@android:color/transparent</item>
+        <item name="android:centerDark">@android:color/transparent</item>
+        <item name="android:centerMedium">@android:color/transparent</item>
+        <item name="android:fullBright">@android:color/transparent</item>
+        <item name="android:fullDark">@android:color/transparent</item>
+        <item name="android:topBright">@android:color/transparent</item>
+        <item name="android:topDark">@android:color/transparent</item>
+    </style>
+
+    <style name="AccountTheme" parent="AppTheme.NoActionBar_03">
+
+    </style>
+
+    <style name="WindowsAnimationStyle_Slide">
+        <item name="android:windowEnterAnimation">@anim/slide_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_down</item>
+    </style>
+
+    <style name="WindowstransitionStyle_Slide">
+        <item name="android:windowEnterTransition">@anim/slide_up</item>
+        <item name="android:windowExitTransition">@anim/slide_down</item>
     </style>
 
 </resources>

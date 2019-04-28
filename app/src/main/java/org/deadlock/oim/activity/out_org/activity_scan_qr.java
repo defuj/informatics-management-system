@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
-public class activity_scan_qr_2 extends AppCompatActivity{
+public class activity_scan_qr extends AppCompatActivity{
     private CaptureManager capture;
     private DecoratedBarcodeView barcodeScannerView;
 
@@ -26,7 +26,7 @@ public class activity_scan_qr_2 extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scan_qr_2);
+        setContentView(R.layout.activity_scan_qr);
 
         getWindow().setAllowEnterTransitionOverlap(true);
         getWindow().setAllowReturnTransitionOverlap(true);

@@ -67,7 +67,7 @@ public class fragment_notifications extends Fragment {
             orgs.add(modelListOrg);
         }**/
 
-        for(int a = 1;a < 10;a++){
+        for(int a = 1;a < 5;a++){
             modelListNotif = new model_list_notif();
             notifs.add(modelListNotif);
         }

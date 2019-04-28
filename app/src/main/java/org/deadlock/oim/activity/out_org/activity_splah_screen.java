@@ -22,7 +22,7 @@ public class activity_splah_screen extends AppCompatActivity {
         loggedIn = sharedPreferences.getBoolean(data_session.LOGGEDIN_SHARED_PREF, false);
 
         if(loggedIn){
-            startActivity(new Intent(activity_splah_screen.this, activity_home_group.class),
+            startActivity(new Intent(activity_splah_screen.this, activity_home_group_03.class),
                     ActivityOptionsCompat.makeSceneTransitionAnimation(activity_splah_screen.this).toBundle());
         }else{
             setContentView(R.layout.activity_splah_screen);
@@ -42,7 +42,7 @@ public class activity_splah_screen extends AppCompatActivity {
             @Override
             public void onFinish() {
                 if(loggedIn){
-                    startActivity(new Intent(activity_splah_screen.this, activity_home_group.class),
+                    startActivity(new Intent(activity_splah_screen.this, activity_home_group_03.class),
                             ActivityOptionsCompat.makeSceneTransitionAnimation(activity_splah_screen.this).toBundle());
                 }else{
                     startActivity(new Intent(activity_splah_screen.this, activity_sign.class),

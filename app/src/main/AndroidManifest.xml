@@ -31,25 +31,37 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="p">
         <activity
-            android:name=".activity.out_org.activity_add_org"
+            android:name=".activity.out_org.account.activity_account"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AccountTheme"/>
         <activity
-            android:name=".activity.in_org.activity_organization"
+            android:name=".activity.in_org.activity_organizations"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.FullscreenTheme" />
+            android:theme="@style/AppTheme.NoActionBar_03" />
         <activity
-            android:name=".activity.out_org.activity_scan_qr_2"
+            android:name=".activity.out_org.activity_create_group_org"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar_03" />
+        <activity
+            android:name=".activity.out_org.activity_scan_qr"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.FullscreenTheme" />
         <activity
             android:name=".activity.out_org.activity_setting"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar_03" />
         <activity
-            android:name=".activity.out_org.activity_home_group"
+            android:name=".activity.out_org.activity_home_group_03"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar_03" />
+        <activity
+            android:name=".activity.out_org.activity_home_group_02"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.out_org.activity_home_group_01"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar_03" />
         <activity
             android:name=".activity.out_org.activity_splah_screen"
             android:screenOrientation="portrait"

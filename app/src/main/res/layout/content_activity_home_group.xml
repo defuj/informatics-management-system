@@ -6,17 +6,20 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activity.out_org.activity_home_group"
-    tools:showIn="@layout/app_bar_activity_home_group"
+    tools:context=".activity.out_org.activity_home_group_03"
+    tools:showIn="@layout/activity_home_group_03"
     android:id="@+id/content_home">
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/homerefresh">
-        <androidx.viewpager.widget.ViewPager
+
+        <org.deadlock.oim.adapter.NonSwipeableViewPager
             android:id="@+id/HomePager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:isScrollContainer="false"
+            android:overScrollMode="never" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

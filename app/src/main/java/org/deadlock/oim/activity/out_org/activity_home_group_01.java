@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -36,23 +37,20 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
-public class activity_home_group extends AppCompatActivity
+public class activity_home_group_01 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private adapter_home adapterHome;
     private ViewPager homeViewPager;
     private SwipeRefreshLayout homeSwipeRefresh;
     private int current_position = 0;
-    //private net network;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fresco.initialize(this);
-        setContentView(R.layout.activity_home_group);
+        setContentView(R.layout.activity_home_group_01);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        //network = new net();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -81,6 +79,26 @@ public class activity_home_group extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 addOrg();
+            }
+        });
+
+        ImageButton see_notif = findViewById(R.id.see_notif);
+        see_notif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                homeViewPager.setCurrentItem(1, false);
+                adapterHome.notifyDataSetChanged();
+                current_position = 1;
+            }
+        });
+
+        TextView txtTitle = findViewById(R.id.txtTitle);
+        txtTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                homeViewPager.setCurrentItem(0, false);
+                adapterHome.notifyDataSetChanged();
+                current_position = 0;
             }
         });
 
@@ -144,13 +162,13 @@ public class activity_home_group extends AppCompatActivity
     }
 
     private void addOrg(){
-        startActivity(new Intent(activity_home_group.this, activity_add_org.class),
+        startActivity(new Intent(activity_home_group_01.this, activity_create_group_org.class),
                 ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
     }
 
     @SuppressLint("SetTextI18n")
     private void joinOrg(){
-        //View viewroot = View.inflate(activity_home_group.this,R.layout.content_alert_dialog_join_org,null);
+        //View viewroot = View.inflate(activity_home_group_02.this,R.layout.content_alert_dialog_join_org,null);
         final EditText token = new EditText(this);
         token.findViewById(R.id.token_code);
         token.setText("Bismillah");
@@ -181,7 +199,7 @@ public class activity_home_group extends AppCompatActivity
         ScanQR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new IntentIntegrator(activity_home_group.this).setCaptureActivity(activity_scan_qr_2.class).initiateScan();
+                new IntentIntegrator(activity_home_group_01.this).setCaptureActivity(activity_scan_qr.class).initiateScan();
 
                 alertDialog.dismiss();
             }
@@ -191,7 +209,7 @@ public class activity_home_group extends AppCompatActivity
     }
 
     private void verifyToken(){
-        final ProgressDialog dialog = new ProgressDialog(activity_home_group.this);
+        final ProgressDialog dialog = new ProgressDialog(activity_home_group_01.this);
         dialog.setMessage("Verifying code");
         dialog.show();
 
@@ -233,7 +251,7 @@ public class activity_home_group extends AppCompatActivity
                 alertDialog.hide();
 
                 //uploading
-                final ProgressDialog dialog = new ProgressDialog(activity_home_group.this);
+                final ProgressDialog dialog = new ProgressDialog(activity_home_group_01.this);
                 dialog.setMessage("Uploading...");
                 dialog.show();
 
@@ -267,7 +285,7 @@ public class activity_home_group extends AppCompatActivity
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(activity_home_group.this,"This feature is under development",Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity_home_group_01.this,"This feature is under development",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -311,6 +329,14 @@ public class activity_home_group extends AppCompatActivity
             showSnackBar();
         }else if (id == R.id.action_join) {
             joinOrg();
+        }else if(id == R.id.action_requested){
+            homeViewPager.setCurrentItem(2, false);
+            adapterHome.notifyDataSetChanged();
+            current_position = 2;
+        }else if(id == R.id.see_notif){
+            homeViewPager.setCurrentItem(1, false);
+            adapterHome.notifyDataSetChanged();
+            current_position = 1;
         }
 
         return super.onOptionsItemSelected(item);
@@ -335,7 +361,7 @@ public class activity_home_group extends AppCompatActivity
             adapterHome.notifyDataSetChanged();
             current_position = 1;
         } else if (id == R.id.nav_setting) {
-            startActivity(new Intent(activity_home_group.this, activity_setting.class),
+            startActivity(new Intent(activity_home_group_01.this, activity_setting.class),
                     ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
         } else if (id == R.id.nav_help) {
             showSnackBar();
@@ -361,7 +387,7 @@ public class activity_home_group extends AppCompatActivity
                 //AlertDialog alertDialog = builder.create();
                 //alertDialog.show();
 
-                final ProgressDialog dialog = new ProgressDialog(activity_home_group.this);
+                final ProgressDialog dialog = new ProgressDialog(activity_home_group_01.this);
                 dialog.setMessage("Verifying code");
                 dialog.show();
 
@@ -400,11 +426,6 @@ public class activity_home_group extends AppCompatActivity
     }
 
     private void request_join(){
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        View view = View.inflate(this,R.layout.content_alert_dialog_request_sended,null);
-
-        dialog.setView(view);
-        AlertDialog alertDialog = dialog.create();
-        alertDialog.show();
+        Toast.makeText(activity_home_group_01.this,"Thanks for your request. See your request on My Request menu.",Toast.LENGTH_SHORT).show();
     }
 }

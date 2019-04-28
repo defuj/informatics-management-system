@@ -1,7 +1,7 @@
 package org.deadlock.oim.model;
 
 public class model_list_org {
-    private String id,org,nama,desc,icon;
+    private String id,org,desc,icon,theme,color;
 
     public String getOrg() {
         return org;
@@ -13,10 +13,6 @@ public class model_list_org {
 
     public String getId() {
         return id;
-    }
-
-    public String getNama() {
-        return nama;
     }
 
     public String getDesc() {
@@ -31,15 +27,27 @@ public class model_list_org {
         this.id = id;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
-    }
-
     public void setDesc(String desc) {
         this.desc = desc;
     }
 
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    public String getTheme() {
+        return theme;
+    }
+
+    public void setTheme(String theme) {
+        this.theme = theme;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 }
